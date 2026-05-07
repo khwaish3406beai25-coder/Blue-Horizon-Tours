@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packing Assistant - Blue Horizon Tours</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="packing.html" class="active">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="moodscale.html">Mood Scale</a></li>
+      <li><a href="moodquiz.html">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>🧳 Packing Assistant</h2>
+  <p>Smart checklist based on your trip type. Click items to check them off!</p>
+
+  <div style="text-align:center; margin-bottom:30px;">
+    <label style="font-weight:800; color:#023e8a; font-size:15px; margin-right:10px;">Select Trip Type:</label>
+    <select id="packingFilter" style="padding:10px 18px; border-radius:12px; border:1.5px solid rgba(0,119,182,0.3); font-size:14px; font-family:inherit; outline:none; cursor:pointer;">
+      <option value="all">All Checklists</option>
+      <option value="hill">🏔 Hill Trip</option>
+      <option value="beach">🏖 Beach Trip</option>
+      <option value="adventure">🧗 Adventure Trip</option>
+    </select>
+  </div>
+
+  <div class="card-container" id="packingCards">
+    <div class="card" data-type="hill">
+      <h3>🏔 Hill Trip Checklist</h3>
+      <ul id="list-hill" class="check-list">
+        <li>🧥 Jacket / Hoodie</li>
+        <li>🧤 Gloves &amp; Cap</li>
+        <li>👟 Trekking Shoes</li>
+        <li>🧴 Moisturizer</li>
+        <li>🕶 Sunglasses</li>
+        <li>🔦 Torch / Flashlight</li>
+        <li>💊 Basic Medicines</li>
+      </ul>
+      <p id="prog-hill" style="margin-top:12px; font-size:13px; font-weight:700; color:#0077b6;">Packed: 0 / 7</p>
+    </div>
+
+    <div class="card" data-type="beach">
+      <h3>🏖 Beach Trip Checklist</h3>
+      <ul id="list-beach" class="check-list">
+        <li>🩳 Shorts &amp; T-Shirts</li>
+        <li>🩴 Slippers</li>
+        <li>🧴 Sunscreen SPF 50</li>
+        <li>🏊 Swimwear</li>
+        <li>🎧 Earphones</li>
+        <li>📷 Camera</li>
+        <li>💧 Water Bottle</li>
+      </ul>
+      <p id="prog-beach" style="margin-top:12px; font-size:13px; font-weight:700; color:#0077b6;">Packed: 0 / 7</p>
+    </div>
+
+    <div class="card" data-type="adventure">
+      <h3>🧗 Adventure Trip Checklist</h3>
+      <ul id="list-adventure" class="check-list">
+        <li>🎒 Backpack</li>
+        <li>💧 Water Bottle</li>
+        <li>🩹 First Aid Kit</li>
+        <li>👟 Sports Shoes</li>
+        <li>🔦 Torch Light</li>
+        <li>🗺 Map / GPS</li>
+        <li>🧃 Energy Snacks</li>
+      </ul>
+      <p id="prog-adventure" style="margin-top:12px; font-size:13px; font-weight:700; color:#0077b6;">Packed: 0 / 7</p>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:30px;">
+    <button onclick="resetAll()" style="padding:12px 28px; background:linear-gradient(to right,#e63946,#ff6b6b); color:#fff; border:none; border-radius:14px; font-weight:800; font-size:14px; cursor:pointer; font-family:inherit;">
+      🔄 Reset All Checklists
+    </button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Blue Horizon Tours | Packing Assistant 🧳</p>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<button id="darkModeBtn">🌙</button>
+
+<script src="main.js"></script>
+<script>
+const types = ["hill", "beach", "adventure"];
+
+types.forEach(function(type) {
+  const ul = document.getElementById("list-" + type);
+  const items = ul.querySelectorAll("li");
+  items.forEach(function(li) {
+    li.style.cursor = "pointer";
+    li.addEventListener("click", function() {
+      li.classList.toggle("checked");
+      updateProgress(type);
+    });
+  });
+});
+
+function updateProgress(type) {
+  const ul      = document.getElementById("list-" + type);
+  const total   = ul.querySelectorAll("li").length;
+  const checked = ul.querySelectorAll("li.checked").length;
+  document.getElementById("prog-" + type).textContent = "Packed: " + checked + " / " + total;
+  if (checked === total) {
+    alert("All items packed for " + type + " trip! Ready to go 🎒");
+  }
+}
+
+function resetAll() {
+  document.querySelectorAll(".check-list li").forEach(function(li) {
+    li.classList.remove("checked");
+  });
+  types.forEach(updateProgress);
+}
+
+
+document.getElementById("packingFilter").addEventListener("change", function() {
+  const val = this.value;
+  document.querySelectorAll("#packingCards .card").forEach(function(card) {
+    if (val === "all" || card.dataset.type === val) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+</script>
+
+<style>
+.check-list li.checked {
+  text-decoration: line-through;
+  opacity: 0.5;
+  background: rgba(0,180,216,0.1);
+  border-radius: 6px;
+  padding-left: 4px;
+}
+.check-list li:hover {
+  background: rgba(0,180,216,0.08);
+  border-radius: 6px;
+  padding-left: 4px;
+}
+</style>
+</body>
+</html>

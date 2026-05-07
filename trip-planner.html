@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trip Planner - Blue Horizon Tours</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html" class="active">Trip Planner</a></li>
+      <li><a href="packing.html">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="moodscale.html">Mood Scale</a></li>
+      <li><a href="moodquiz.html">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="min-height:60vh;">
+  <div class="hero-text">
+    <h1>Plan Your Dream Trip 💼✈️</h1>
+    <p>Tell us your budget, group size and travel vibe. We will recommend the best destinations based on your mood.</p>
+    <div class="hero-btns">
+      <a href="#planner" class="btn btn-primary">Start Planning</a>
+      <a href="index.html#moods" class="btn btn-secondary">Explore Moods</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?auto=format&fit=crop&w=1200&q=60" alt="Trip Planning">
+  </div>
+</section>
+
+<section class="section" id="planner">
+  <h2>📌 Trip Planner Form</h2>
+  <p>Fill the details below and plan your travel.</p>
+
+  <div class="card-container" style="margin-bottom:40px;">
+    <div class="card"><h3>📍 Smart Suggestions</h3><p>We recommend destinations based on your mood and budget.</p></div>
+    <div class="card"><h3>💰 Budget Friendly</h3><p>Choose packages that match your pocket without stress.</p></div>
+    <div class="card"><h3>🕒 Perfect Scheduling</h3><p>Select duration and get the best itinerary suggestion.</p></div>
+  </div>
+
+  <div class="form-box">
+    <form id="plannerForm" novalidate>
+
+      <label>👤 Your Name</label>
+      <input type="text" id="pName" placeholder="Enter your name">
+      <p class="error-msg" id="err-pName">⚠️ Name is required.</p>
+
+      <label>👨‍👩‍👧 Number of People</label>
+      <input type="number" id="pPeople" placeholder="Enter number of people" min="1">
+      <p class="error-msg" id="err-pPeople">⚠️ Enter at least 1 person.</p>
+
+      <label>💸 Budget Range (INR)</label>
+      <input type="text" id="pBudget" placeholder="Example: 5000 - 15000">
+      <p class="error-msg" id="err-pBudget">⚠️ Please enter your budget range.</p>
+
+      <label>🎯 Trip Type</label>
+      <select id="pType">
+        <option value="">-- Select Trip Type --</option>
+        <option>Relax Mode 😌</option>
+        <option>Adventure Mode 🧗</option>
+        <option>Family Mode 👨‍👩‍👧</option>
+        <option>Budget Explorer 🎒</option>
+      </select>
+      <p class="error-msg" id="err-pType">⚠️ Please select a trip type.</p>
+
+      <label>📅 Duration (Days)</label>
+      <input type="number" id="pDays" placeholder="Enter number of days" min="1">
+      <p class="error-msg" id="err-pDays">⚠️ Enter at least 1 day.</p>
+
+      <label>🌟 Preferred Experience</label>
+      <textarea id="pExp" placeholder="Example: Beaches, Mountains, Food Tours, Adventure Sports" rows="3"></textarea>
+
+      <button type="submit" class="submit-btn">Submit Trip Plan 🚀</button>
+    </form>
+
+    <div id="planSuccess" style="display:none; margin-top:20px; padding:20px; background:linear-gradient(to right,#0077b6,#00b4d8); border-radius:14px; color:#fff; font-weight:700; font-size:15px; text-align:center; line-height:2;">
+      🎉 Trip Plan Submitted!<br>
+      <span id="planSummary" style="font-size:13px; opacity:0.9;"></span><br>
+      <a href="booking.html" style="color:#ffdd00; font-weight:900; text-decoration:none; font-size:14px;">📌 Proceed to Booking →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Blue Horizon Tours | Trip Planner 💼✨</p>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<button id="darkModeBtn">🌙</button>
+
+<script src="main.js"></script>
+<script>
+document.getElementById("plannerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  const name   = document.getElementById("pName").value.trim();
+  const people = parseInt(document.getElementById("pPeople").value);
+  const budget = document.getElementById("pBudget").value.trim();
+  const type   = document.getElementById("pType").value;
+  const days   = parseInt(document.getElementById("pDays").value);
+
+  se("err-pName",   !name);
+  se("err-pPeople", !(people >= 1));
+  se("err-pBudget", !budget);
+  se("err-pType",   !type);
+  se("err-pDays",   !(days >= 1));
+
+  if (!name || !(people >= 1) || !budget || !type || !(days >= 1)) valid = false;
+  if (!valid) return;
+
+  document.getElementById("planSummary").textContent =
+    name + " | " + people + " person(s) | " + days + " day(s) | " + type + " | Budget: ₹" + budget;
+
+  document.getElementById("plannerForm").style.display = "none";
+  document.getElementById("planSuccess").style.display = "block";
+  document.getElementById("planSuccess").scrollIntoView({ behavior: "smooth" });
+});
+
+function se(id, cond) {
+  document.getElementById(id).classList.toggle("show", cond);
+}
+</script>
+</body>
+</html>

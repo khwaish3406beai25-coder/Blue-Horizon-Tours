@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Horizon | Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="login-container">
+  <h1>Blue <span>Horizon</span></h1>
+  <p class="tagline">Explore the world with us 🌊</p>
+
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Username" autocomplete="off">
+    <input type="password" id="password" placeholder="Password">
+    <p class="login-error" id="loginError"></p>
+    <button type="submit">Login 🚀</button>
+    <div class="links">
+      <a href="#" id="forgotLink">Forgot Password?</a>
+      <a href="#" id="createLink">Create Account</a>
+    </div>
+  </form>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const uname = document.getElementById("username").value.trim();
+  const pwd   = document.getElementById("password").value;
+  const errEl = document.getElementById("loginError");
+
+  if (!uname || !pwd) {
+    errEl.textContent = "⚠️ Please fill in all fields!";
+    errEl.style.display = "block";
+    return;
+  }
+
+  // form validation - check required fields only
+  if (uname.length < 3) {
+    errEl.textContent = "⚠️ Username must be at least 3 characters!";
+    errEl.style.display = "block";
+    return;
+  }
+
+  if (pwd.length < 4) {
+    errEl.textContent = "⚠️ Password must be at least 4 characters!";
+    errEl.style.display = "block";
+    return;
+  }
+
+
+  errEl.style.display = "none";
+  localStorage.setItem("bhLoggedIn", "true");
+  localStorage.setItem("bhUser", uname);
+  window.location.href = "index.html";
+});
+
+document.getElementById("forgotLink").addEventListener("click", function(e) {
+  e.preventDefault();
+  alert("Password reset link sent to your registered email!");
+});
+
+document.getElementById("createLink").addEventListener("click", function(e) {
+  e.preventDefault();
+  alert("Account creation coming soon! Stay tuned.");
+});
+</script>
+
+</body>
+</html>

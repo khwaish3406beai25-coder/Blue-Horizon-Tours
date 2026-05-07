@@ -1,0 +1,168 @@
+/*DARK MODE BUTTON*/
+#darkModeBtn {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #023e8a;
+  color: #fff;
+  font-size: 18px;
+  border: 2px solid #fff;
+  cursor: pointer;
+  z-index: 900;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+/*DARK MODE*/
+body.dark {
+  background: linear-gradient(135deg, #0d1b2a, #1b2838) !important;
+  color: #e0e0e0 !important;
+}
+body.dark header {
+  background: rgba(2, 20, 50, 0.95) !important;
+}
+body.dark .card,
+body.dark .form-box,
+body.dark .faq-item,
+body.dark .review,
+body.dark .scale-box,
+body.dark .contact-card {
+  background: rgba(255,255,255,0.07) !important;
+  color: #ddd !important;
+}
+body.dark .card h3,
+body.dark .faq-item h4,
+body.dark .review h4 {
+  color: #7ecfff !important;
+}
+body.dark .section h2 {
+  color: #7ecfff !important;
+}
+body.dark .card p,
+body.dark .faq-item p,
+body.dark .review p {
+  color: #bbb !important;
+}
+body.dark footer {
+  background: linear-gradient(to right, #030c18, #06204a) !important;
+}
+body.dark .form-box input,
+body.dark .form-box select,
+body.dark .form-box textarea {
+  background: rgba(255,255,255,0.1) !important;
+  color: #fff !important;
+  border-color: rgba(100,180,255,0.3) !important;
+}
+body.dark .section.alt {
+  background: rgba(255,255,255,0.05) !important;
+}
+
+/*BACK TO TOP*/
+#backToTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  z-index: 900;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+#backToTop:hover {
+  opacity: 0.9;
+}
+
+/*STATS COUNTER*/
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 50px 70px;
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  text-align: center;
+}
+.stat-box { color: #fff; }
+.stat-box .counter {
+  font-size: 2.2rem;
+  font-weight: 900;
+  display: block;
+}
+.stat-box span.label {
+  font-size: 13px;
+  opacity: 0.88;
+  margin-top: 4px;
+  display: block;
+}
+
+/*ERROR MESSAGES*/
+.error-msg {
+  color: #e63946;
+  font-size: 12px;
+  margin: -4px 0 8px;
+  display: none;
+}
+.error-msg.show {
+  display: block;
+}
+
+/*ADD REVIEW FORM*/
+.review-form-box {
+  max-width: 500px;
+  background: rgba(255,255,255,0.9);
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+  margin: 30px auto 0;
+}
+.review-form-box h3 {
+  color: #023e8a;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+.review-form-box input,
+.review-form-box select,
+.review-form-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1.5px solid rgba(0,119,182,0.2);
+  border-radius: 10px;
+  font-size: 14px;
+  background: rgba(230,246,255,0.6);
+  outline: none;
+  font-family: inherit;
+}
+.review-form-box button {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(to right, #0077b6, #00b4d8);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: inherit;
+}
+body.dark .review-form-box {
+  background: rgba(255,255,255,0.07);
+}
+body.dark .review-form-box input,
+body.dark .review-form-box select,
+body.dark .review-form-box textarea {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border-color: rgba(100,180,255,0.3);
+}
+
+@media (max-width: 960px) {
+  .stats-section { padding: 40px 22px; }
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking - Blue Horizon Tours</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <ul>
+      <li><a href="index.ht+ml">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="packing.html">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html" class="active">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="moodscale.html">Mood Scale</a></li>
+      <li><a href="moodquiz.html">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section alt">
+  <h2>🌊 Choose Your Travel Mood</h2>
+  <p>Pick your mood and let us recommend your perfect trip.</p>
+  <div class="card-container">
+    <div class="card">
+      <h3>😌 Relax Mode</h3>
+      <p>Beaches, luxury stays, and calm vibes.</p>
+      <ul><li>🏖 Beaches &amp; Resorts</li><li>🚢 Cruises</li><li>🌅 Sunset Locations</li></ul>
+    </div>
+    <div class="card">
+      <h3>🧗 Adventure Mode</h3>
+      <p>Mountains, speed, and adrenaline.</p>
+      <ul><li>🏔 Trekking</li><li>🚣 Rafting</li><li>🏜 Desert Safari</li></ul>
+    </div>
+    <div class="card">
+      <h3>👨‍👩‍👧 Family Mode</h3>
+      <p>Safe, comfortable and fun destinations.</p>
+      <ul><li>🎡 Theme Parks</li><li>🏨 Family Resorts</li><li>🍲 Food Tours</li></ul>
+    </div>
+    <div class="card">
+      <h3>🎒 Budget Explorer</h3>
+      <p>Travel smart with low-cost trips.</p>
+      <ul><li>💸 Low-cost Travel</li><li>🚍 Budget Transport</li><li>🏕 Affordable Hotels</li></ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bookForm">
+  <h2>📌 Book Your Trip</h2>
+  <p>Fill your details and confirm your booking.</p>
+
+  <div class="form-box">
+    <form id="bookingForm" novalidate>
+
+      <label>Full Name</label>
+      <input type="text" id="bName" placeholder="Enter your full name">
+      <p class="error-msg" id="err-bName">⚠️ Name is required.</p>
+
+      <label>Email</label>
+      <input type="email" id="bEmail" placeholder="Enter your email">
+      <p class="error-msg" id="err-bEmail">⚠️ Enter a valid email.</p>
+
+      <label>Select Destination</label>
+      <select id="bDest">
+        <option value="">-- Choose Destination --</option>
+        <option value="Goa|4999">Goa - ₹4,999/person</option>
+        <option value="Manali|6999">Manali - ₹6,999/person</option>
+        <option value="Leh Ladakh|9999">Leh Ladakh - ₹9,999/person</option>
+        <option value="Maldives|24999">Maldives - ₹24,999/person</option>
+        <option value="Jaipur|3999">Jaipur - ₹3,999/person</option>
+      </select>
+      <p class="error-msg" id="err-bDest">⚠️ Please select a destination.</p>
+
+      <label>Travel Date</label>
+      <input type="date" id="bDate">
+      <p class="error-msg" id="err-bDate">⚠️ Please select a future date.</p>
+
+      <label>Number of People</label>
+      <input type="number" id="bPeople" placeholder="Enter number of people" min="1" max="50">
+      <p class="error-msg" id="err-bPeople">⚠️ Enter a valid number (1-50).</p>
+
+      <div id="priceBox" style="display:none; margin:16px 0; padding:16px; background:linear-gradient(to right,#0077b6,#00b4d8); border-radius:14px; color:#fff; font-weight:800; text-align:center; font-size:15px;">
+        💰 Estimated Total: <span id="priceDisplay">₹0</span>
+      </div>
+      <button type="submit" class="submit-btn">Confirm Booking ✅</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Blue Horizon Tours | Booking 📌</p>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<button id="darkModeBtn">🌙</button>
+
+<script src="main.js"></script>
+<script>
+// price calculator
+function calcPrice() {
+  const destVal = document.getElementById("bDest").value;
+  const people  = parseInt(document.getElementById("bPeople").value) || 0;
+  const priceBox = document.getElementById("priceBox");
+
+  if (destVal && people > 0) {
+    const pricePerPerson = parseInt(destVal.split("|")[1]);
+    const total = pricePerPerson * people;
+    document.getElementById("priceDisplay").textContent = "₹" + total.toLocaleString("en-IN");
+    priceBox.style.display = "block";
+  } else {
+    priceBox.style.display = "none";
+  }
+}
+
+document.getElementById("bDest").addEventListener("change", calcPrice);
+document.getElementById("bPeople").addEventListener("input", calcPrice);
+
+// form validation
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  const name   = document.getElementById("bName").value.trim();
+  const email  = document.getElementById("bEmail").value.trim();
+  const dest   = document.getElementById("bDest").value;
+  const date   = document.getElementById("bDate").value;
+  const people = parseInt(document.getElementById("bPeople").value);
+
+  showErr("err-bName", !name);
+  if (!name) valid = false;
+
+  const emailOK = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  showErr("err-bEmail", !emailOK);
+  if (!emailOK) valid = false;
+
+  showErr("err-bDest", !dest);
+  if (!dest) valid = false;
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const sel = date ? new Date(date) : null;
+  const dateOK = sel && sel > today;
+  showErr("err-bDate", !dateOK);
+  if (!dateOK) valid = false;
+
+  const peopleOK = people >= 1 && people <= 50;
+  showErr("err-bPeople", !peopleOK);
+  if (!peopleOK) valid = false;
+
+  if (!valid) return;
+
+  const destName = dest.split("|")[0];
+  const total    = parseInt(dest.split("|")[1]) * people;
+
+  alert("✅ Booking Confirmed!\nDestination: " + destName + "\nPeople: " + people + "\nTotal: ₹" + total.toLocaleString("en-IN"));
+
+  const bookings = JSON.parse(localStorage.getItem("bhBookings") || "[]");
+  bookings.push({ name, email, destination: destName, date, people, total });
+  localStorage.setItem("bhBookings", JSON.stringify(bookings));
+
+  this.reset();
+  document.getElementById("priceBox").style.display = "none";
+  document.querySelectorAll(".error-msg").forEach(m => m.classList.remove("show"));
+});
+
+function showErr(id, condition) {
+  document.getElementById(id).classList.toggle("show", condition);
+}
+</script>
+</body>
+</html>

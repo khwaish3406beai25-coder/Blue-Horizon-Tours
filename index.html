@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Horizon Tours - Travel by Mood</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <i class="fa-solid fa-earth-americas globe-icon"> </i>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="packing.html">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="moodscale.html">Mood Scale</a></li>
+      <li><a href="moodquiz.html">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Travel by Mood <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <i class="fa-solid fa-earth-americas globe-icon">  </i> ✨</h1>
+    <p>Blue Horizon Tours was created by travel lovers who believe every journey should match your mood.
+       We don't just show destinations — we match your vibe with the perfect travel experience.</p>
+    <div class="hero-btns">
+      <a href="trip-planner.html" class="btn btn-primary">Plan Your Trip</a>
+      <a href="moodquiz.html" class="btn btn-secondary">Take Mood Quiz</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60" alt="Travel">
+  </div>
+</section>
+
+
+<!-- LIMITED TIME OFFER -->
+<div style="background:linear-gradient(135deg,#023e8a,#0077b6); color:#fff; padding:30px 40px; margin:40px 70px; border-radius:20px; box-shadow:0 10px 30px rgba(0,119,182,0.3); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+  
+  <div>
+    <h3 style="font-size:1.4rem; font-weight:900; margin-bottom:6px;">🔥 Limited Time Offer!</h3>
+    <p style="font-size:14px; opacity:0.9; margin:0;">Grab the best deals before time runs out!</p>
+  </div>
+
+  <div style="text-align:center;">
+    <p style="font-size:13px; opacity:0.85; margin-bottom:6px;">⏱ Offer Ends In</p>
+    <div id="offerTimer" style="font-size:2rem; font-weight:900; letter-spacing:3px; background:rgba(255,255,255,0.15); padding:10px 24px; border-radius:12px;">24:00:00</div>
+  </div>
+
+  <div style="text-align:center;">
+    <p style="font-size:13px; opacity:0.85; margin-bottom:8px;">Use Code</p>
+    <div style="background:#ffdd00; color:#023e8a; font-size:1.2rem; font-weight:900; padding:10px 24px; border-radius:12px; letter-spacing:2px;">HORIZON25</div>
+    <p style="font-size:12px; opacity:0.8; margin-top:6px;">Get 25% OFF on all bookings!</p>
+  </div>
+
+  <div>
+    <a href="booking.html" style="background:#fff; color:#023e8a; font-weight:900; font-size:14px; padding:13px 26px; border-radius:14px; text-decoration:none; display:inline-block; box-shadow:0 4px 14px rgba(0,0,0,0.15);">Book Now →</a>
+  </div>
+
+</div>
+
+<!-- COUNTER STATS -->
+<div class="stats-section">
+  <div class="stat-box reveal">
+    <span class="counter" data-target="1200" data-suffix="+">0</span>
+    <span class="label">Happy Customers</span>
+  </div>
+  <div class="stat-box reveal">
+    <span class="counter" data-target="50" data-suffix="+">0</span>
+    <span class="label">Destinations</span>
+  </div>
+  <div class="stat-box reveal">
+    <span class="counter" data-target="300" data-suffix="+">0</span>
+    <span class="label">Trips Booked</span>
+  </div>
+  <div class="stat-box reveal">
+    <span class="counter" data-target="5" data-suffix="⭐">0</span>
+    <span class="label">Average Rating</span>
+  </div>
+</div>
+
+<!-- MOODS -->
+<section class="section alt" id="moods">
+  <h2>🌈 Travel by Your Mood</h2>
+  <p>Choose your vibe and we'll find the perfect destination.</p>
+  <div class="card-container">
+    <div class="card reveal">
+      <h3>😌 Relax Mode</h3>
+      <p>Perfect for peace lovers who want beaches, luxury stays, and calm vibes.</p>
+      <ul><li>🏖 Beaches &amp; Resorts</li><li>🚢 Cruises</li><li>🌅 Sunset Locations</li></ul>
+    </div>
+    <div class="card reveal">
+      <h3>🧗 Adventure Mode</h3>
+      <p>For thrill seekers who want mountains, speed, and adrenaline.</p>
+      <ul><li>🏔 Trekking</li><li>🚣 Rafting</li><li>🏜 Desert Safari</li></ul>
+    </div>
+    <div class="card reveal">
+      <h3>👨‍👩‍👧 Family Mode</h3>
+      <p>Safe, comfortable and fun destinations for family bonding.</p>
+      <ul><li>🎡 Theme Parks</li><li>🏨 Family Resorts</li><li>🍲 Local Food Tours</li></ul>
+    </div>
+    <div class="card reveal">
+      <h3>🎒 Budget Explorer</h3>
+      <p>Travel smart with low-cost trips and budget-friendly stays.</p>
+      <ul><li>💸 Low-cost Travel</li><li>🚍 Budget Transport</li><li>🏕 Affordable Hotels</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <h2>❓ Frequently Asked Questions</h2>
+  <p>Some common questions asked by travelers. Click on a question to see the answer.</p>
+  <div class="faq">
+    <div class="faq-item reveal">
+      <h4>How does Mood Travel work?</h4>
+      <p>Instead of searching destinations, you choose your mood and we suggest the best trips.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>Is the Mood Quiz accurate?</h4>
+      <p>Yes! Take the quiz and get personalised destination suggestions based on your answers.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>Do you provide student discounts?</h4>
+      <p>Yes! We offer group discounts and special student budget packages.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>How do I book a trip?</h4>
+      <p>Go to the Booking page, fill your details, select destination and confirm. It's that simple!</p>
+    </div>
+    <div class="faq-item reveal">
+      <h4>Can I travel with friends?</h4>
+      <p>Absolutely! Check our Friends Corner page for group discounts and budget hacks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" id="reviews">
+  <h2>⭐ Customer Reviews</h2>
+  <p>What travelers say about Blue Horizon Tours.</p>
+
+  <div class="testimonials" id="reviewList">
+    <div class="review reveal">
+      <h4>Riya Sharma</h4>
+      <span>★★★★★</span>
+      <p>Best trip planning ever! The mood concept is so unique. Goa trip was perfect!</p>
+    </div>
+    <div class="review reveal">
+      <h4>Arjun Mehta</h4>
+      <span>★★★★★</span>
+      <p>Packing assistant feature saved my life. Full premium website feel!</p>
+    </div>
+    <div class="review reveal">
+      <h4>Neha Kapoor</h4>
+      <span>★★★★☆</span>
+      <p>Booked Manali trip with friends. Budget hacks section was super helpful!</p>
+    </div>
+  </div>
+
+  <div class="review-form-box" style="margin-top:40px;">
+    <h3>✍️ Add Your Review</h3>
+    <form id="reviewForm">
+      <input type="text" id="rName" placeholder="Your Name" required>
+      <select id="rStars">
+        <option value="5">★★★★★ – Excellent</option>
+        <option value="4">★★★★☆ – Good</option>
+        <option value="3">★★★☆☆ – Average</option>
+        <option value="2">★★☆☆☆ – Poor</option>
+        <option value="1">★☆☆☆☆ – Terrible</option>
+      </select>
+      <textarea id="rText" placeholder="Write your review..." rows="3"></textarea>
+      <button type="submit">Submit Review ⭐</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-box">
+      <h3>Blue Horizon Tours</h3>
+      <p>Travel by Mood is our unique idea. We help you explore the world based on your vibe, not just maps.</p>
+    </div>
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#moods">Moods</a></li>
+        <li><a href="moodquiz.html">Mood Quiz</a></li>
+        <li><a href="moodscale.html">Mood Scale</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="trip-planner.html">Trip Planner</a></li>
+        <li><a href="packing.html">Packing</a></li>
+        <li><a href="friends.html">Friends</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </div>
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>📧 bluehorizontours@gmail.com</p>
+      <p>📱 +91 98765 43210</p>
+      <p>📍 Mumbai, India</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Blue Horizon Tours | Designed for College Project 🌊✨</p>
+  </div>
+</footer>
+
+<button id="backToTop" title="Back to Top">↑</button>
+<button id="darkModeBtn">🌙</button>
+<script src="main.js"></script>
+</body>
+</html>

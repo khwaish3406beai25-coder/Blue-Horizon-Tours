@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Quiz - Blue Horizon Tours</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="packing.html">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="moodscale.html">Mood Scale</a></li>
+      <li><a href="moodquiz.html" class="active">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>🧠 Travel Mood Quiz</h2>
+  <p>Answer all 5 questions and discover your perfect travel destination!</p>
+
+  <div class="form-box" style="max-width:640px;">
+    <form id="quizForm">
+
+      <h3>1. What do you prefer on a free day?</h3>
+      <input type="radio" class="quiz-option" name="q1" id="q1a" value="relax">
+      <label class="quiz-label" for="q1a">😴 Relaxing and doing nothing</label>
+      <input type="radio" class="quiz-option" name="q1" id="q1b" value="adventure">
+      <label class="quiz-label" for="q1b">🗺️ Exploring new places</label>
+      <input type="radio" class="quiz-option" name="q1" id="q1c" value="party">
+      <label class="quiz-label" for="q1c">🎉 Going out and having fun</label>
+
+      <h3 style="margin-top:20px;">2. Your ideal vacation looks like?</h3>
+      <input type="radio" class="quiz-option" name="q2" id="q2a" value="relax">
+      <label class="quiz-label" for="q2a">🏖 Beaches and calm views</label>
+      <input type="radio" class="quiz-option" name="q2" id="q2b" value="adventure">
+      <label class="quiz-label" for="q2b">🏔 Mountains and adventure</label>
+      <input type="radio" class="quiz-option" name="q2" id="q2c" value="party">
+      <label class="quiz-label" for="q2c">🎶 Nightlife and parties</label>
+
+      <h3 style="margin-top:20px;">3. Choose what fits you best</h3>
+      <input type="radio" class="quiz-option" name="q3" id="q3a" value="relax">
+      <label class="quiz-label" for="q3a">Calm &amp; Peaceful 😌</label>
+      <input type="radio" class="quiz-option" name="q3" id="q3b" value="adventure">
+      <label class="quiz-label" for="q3b">Thrill Seeker 🏔</label>
+      <input type="radio" class="quiz-option" name="q3" id="q3c" value="party">
+      <label class="quiz-label" for="q3c">Fun &amp; Party Lover 🎉</label>
+
+      <h3 style="margin-top:20px;">4. What kind of photos do you post?</h3>
+      <input type="radio" class="quiz-option" name="q4" id="q4a" value="relax">
+      <label class="quiz-label" for="q4a">🌅 Sunsets and landscapes</label>
+      <input type="radio" class="quiz-option" name="q4" id="q4b" value="adventure">
+      <label class="quiz-label" for="q4b">🧗 Action shots and treks</label>
+      <input type="radio" class="quiz-option" name="q4" id="q4c" value="party">
+      <label class="quiz-label" for="q4c">🤳 Selfies with friends at events</label>
+
+      <h3 style="margin-top:20px;">5. Your dream travel buddy?</h3>
+      <input type="radio" class="quiz-option" name="q5" id="q5a" value="relax">
+      <label class="quiz-label" for="q5a">👫 Partner / alone time</label>
+      <input type="radio" class="quiz-option" name="q5" id="q5b" value="adventure">
+      <label class="quiz-label" for="q5b">🧑‍🤝‍🧑 Adventure crew</label>
+      <input type="radio" class="quiz-option" name="q5" id="q5c" value="party">
+      <label class="quiz-label" for="q5c">👥 The whole gang</label>
+
+      <div id="quizError" style="display:none; color:#e63946; font-size:13px; font-weight:700; margin:12px 0;">
+        ⚠️ Please answer all questions before submitting!
+      </div>
+
+      <button type="submit" class="submit-btn" style="margin-top:20px;">Find My Mood 🎯</button>
+    </form>
+
+    <div id="quizResult">
+      <div id="quizResultText"></div>
+      <button onclick="resetQuiz()" style="margin-top:16px; padding:10px 24px; border-radius:10px; background:#ffdd00; color:#111; border:none; font-weight:800; cursor:pointer; font-family:inherit;">
+        🔄 Retake Quiz
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Blue Horizon Tours | Mood Quiz 🧠</p>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<button id="darkModeBtn">🌙</button>
+
+<script src="main.js"></script>
+<script>
+const RESULTS = {
+  relax: {
+    emoji: "🏖",
+    title: "You're a RELAX Traveller!",
+    desc: "You love peace, calm vibes and luxury. Perfect destinations for you:",
+    places: ["🌴 Maldives", "🏖 Goa", "🚢 Kerala Backwaters", "🌅 Andaman Islands"]
+  },
+  adventure: {
+    emoji: "🏔",
+    title: "You're an ADVENTURE Seeker!",
+    desc: "You crave thrill, mountains and adrenaline. Top picks for you:",
+    places: ["🏔 Leh Ladakh", "⛺ Manali", "🚣 Rishikesh", "🏜 Rajasthan Desert Safari"]
+  },
+  party: {
+    emoji: "🎉",
+    title: "You're a PARTY Explorer!",
+    desc: "You love fun, nightlife and socialising. Best destinations for you:",
+    places: ["🎶 Goa Nightlife", "🍻 Mumbai", "🎡 Bangkok", "🏙 Dubai"]
+  }
+};
+
+document.getElementById("quizForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const names = ["q1","q2","q3","q4","q5"];
+  const answers = {};
+  let allAnswered = true;
+
+  names.forEach(function(name) {
+    const sel = document.querySelector('input[name="' + name + '"]:checked');
+    if (!sel) {
+      allAnswered = false;
+    } else {
+      answers[name] = sel.value;
+    }
+  });
+
+  if (!allAnswered) {
+    document.getElementById("quizError").style.display = "block";
+    return;
+  }
+  document.getElementById("quizError").style.display = "none";
+
+  const counts = { relax: 0, adventure: 0, party: 0 };
+  Object.values(answers).forEach(function(v) {
+    counts[v]++;
+  });
+ 
+  const winner = Object.keys(counts).reduce(function(a, b) {
+    return counts[a] > counts[b] ? a : b;
+  });
+
+  const r = RESULTS[winner];
+
+  const placesList = r.places.map(function(p) {
+    return "<li>" + p + "</li>";
+  }).join("");
+
+  document.getElementById("quizResultText").innerHTML =
+    '<div style="font-size:3rem">' + r.emoji + '</div>' +
+    '<h3 style="margin:10px 0;font-size:1.3rem">' + r.title + '</h3>' +
+    '<p style="opacity:0.9;margin-bottom:12px">' + r.desc + '</p>' +
+    '<ul style="list-style:none;font-size:14px;line-height:2">' + placesList + '</ul>' +
+    '<p style="margin-top:14px;font-size:13px;">' +
+    '<a href="booking.html" style="color:#ffdd00;font-weight:800;text-decoration:none;">📌 Book Now →</a>' +
+    '</p>';
+
+  const result = document.getElementById("quizResult");
+  result.classList.add("show");
+  result.scrollIntoView({ behavior: "smooth", block: "center" });
+});
+
+function resetQuiz() {
+  document.getElementById("quizForm").reset();
+  document.getElementById("quizResult").classList.remove("show");
+  document.getElementById("quizForm").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+</body>
+</html>

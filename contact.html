@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Blue Horizon Tours</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="packing.html">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="moodscale.html">Mood Scale</a></li>
+      <li><a href="moodquiz.html">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section">
+  <h2>📞 Contact Us</h2>
+  <p>We are always ready to help you plan your dream trip.</p>
+
+  <div class="contact-cards">
+    <div class="contact-card">
+      <h3>📍 Office</h3>
+      <p>Mumbai, India</p>
+    </div>
+    <div class="contact-card">
+      <h3>📧 Email</h3>
+      <p>bluehorizontours@gmail.com</p>
+    </div>
+    <div class="contact-card">
+      <h3>📱 Phone</h3>
+      <p>+91 98765 43210</p>
+    </div>
+    <div class="contact-card">
+      <h3>🕐 Hours</h3>
+      <p>Mon–Sat: 9am – 7pm</p>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <form id="contactForm" novalidate>
+
+      <label>Your Name</label>
+      <input type="text" id="cName" placeholder="Enter your full name">
+      <p class="error-msg" id="err-cName">⚠️ Name is required.</p>
+
+      <label>Your Email</label>
+      <input type="email" id="cEmail" placeholder="Enter your email address">
+      <p class="error-msg" id="err-cEmail">⚠️ Enter a valid email address.</p>
+
+      <label>Subject</label>
+      <input type="text" id="cSubject" placeholder="What is this about?">
+      <p class="error-msg" id="err-cSubject">⚠️ Subject is required.</p>
+
+      <label>Your Message</label>
+      <textarea id="cMessage" placeholder="Write your message here..." rows="5"></textarea>
+      <p class="error-msg" id="err-cMessage">⚠️ Please write a message (at least 10 characters).</p>
+
+      <button type="submit" class="submit-btn">Send Message 📨</button>
+    </form>
+
+    <div id="contactSuccess" style="display:none; margin-top:20px; padding:18px; background:linear-gradient(to right,#0077b6,#00b4d8); border-radius:14px; color:#fff; text-align:center; font-weight:800; font-size:15px;">
+      ✅ Message Sent Successfully! We'll get back to you within 24 hours. 🙏
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>© 2026 Blue Horizon Tours | Contact 📞</p>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<button id="darkModeBtn">🌙</button>
+
+<script src="main.js"></script>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  let valid = true;
+
+  const name    = document.getElementById("cName").value.trim();
+  const email   = document.getElementById("cEmail").value.trim();
+  const subject = document.getElementById("cSubject").value.trim();
+  const message = document.getElementById("cMessage").value.trim();
+
+  showE("err-cName",    !name);
+  showE("err-cEmail",   !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+  showE("err-cSubject", !subject);
+  showE("err-cMessage", message.length < 10);
+
+  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !subject || message.length < 10) {
+    valid = false;
+  }
+
+  if (!valid) return;
+
+  document.getElementById("contactForm").style.display = "none";
+  document.getElementById("contactSuccess").style.display = "block";
+  document.getElementById("contactSuccess").scrollIntoView({ behavior: "smooth" });
+});
+
+function showE(id, cond) {
+  document.getElementById(id).classList.toggle("show", cond);
+}
+</script>
+</body>
+</html>

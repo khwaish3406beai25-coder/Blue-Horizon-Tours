@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood Scale - Blue Horizon Tours</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="extra.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Blue <span>Horizon</span> Tours</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="maps.html">Maps</a></li>
+      <li><a href="trip-planner.html">Trip Planner</a></li>
+      <li><a href="packing.html">Packing</a></li>
+      <li><a href="friends.html">Friends</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="moodscale.html" class="active">Mood Scale</a></li>
+      <li><a href="moodquiz.html">Mood Quiz</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="section" id="scale">
+  <h2>📊 Trip Mood Scale</h2>
+  <p>From Relaxed to Adventurous — click a dot to see destination info!</p>
+
+  <div class="scale-box">
+    <div class="scale-labels">
+      <span>😌 Relaxed</span>
+      <span>🧗 Adventurous</span>
+    </div>
+    <div class="scale">
+      <div class="dot dot1" title="Maldives" data-dest="Maldives" data-info="Perfect for total relaxation. Crystal blue waters and luxury resorts."></div>
+      <div class="dot dot2" title="Goa"      data-dest="Goa"      data-info="A mix of chill beaches and exciting nightlife. Great for all moods!"></div>
+      <div class="dot dot3" title="Manali"   data-dest="Manali"   data-info="Beautiful mountains with moderate adventure — trekking, snow and rivers."></div>
+      <div class="dot dot4" title="Leh-Ladakh" data-dest="Leh-Ladakh" data-info="Full-on adventure! High altitude and rugged terrain. Not for the faint-hearted!"></div>
+    </div>
+    <p style="margin-top:20px; font-size:14px; color:#444; font-weight:600;">
+      Maldives &rarr; Goa &rarr; Manali &rarr; Leh-Ladakh
+    </p>
+
+    <div id="scaleInfo" style="display:none; margin-top:24px; padding:18px; background:linear-gradient(to right,#023e8a,#0077b6); border-radius:16px; color:#fff; font-size:14px; font-weight:700; text-align:center; line-height:1.9;">
+      <span id="scaleInfoText"></span><br>
+      <a href="booking.html" style="color:#ffdd00; font-weight:900; font-size:13px; text-decoration:none;">📌 Book This Trip &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Blue Horizon Tours | Mood Scale 📊</p>
+  </div>
+</footer>
+
+<button id="backToTop">↑</button>
+<button id="darkModeBtn">🌙</button>
+
+<script src="main.js"></script>
+<script>
+document.querySelectorAll(".dot").forEach(function(dot) {
+  dot.addEventListener("click", function() {
+    const dest = dot.dataset.dest;
+    const info = dot.dataset.info;
+    document.getElementById("scaleInfoText").textContent = "📍 " + dest + " — " + info;
+    document.getElementById("scaleInfo").style.display = "block";
+  });
+});
+</script>
+</body>
+</html>
